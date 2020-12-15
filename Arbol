@@ -1,0 +1,132 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package examenu4;
+ class Arbol{
+	private Nodo raiz;
+        private Nodo raiz2;
+	//contruir un arbol vacio
+	public Arbol()
+	{
+		raiz = null;
+                raiz2 = null;
+	}
+
+	//insertar un nuevo nodo en el arbol de busqueda binaria
+	public synchronized void insertarNodo(int valorInsertar)
+	{
+		if(raiz == null)
+			raiz = new Nodo(valorInsertar); //crea nodo raiz
+
+		else
+			raiz.insertar(valorInsertar); // llama al metodo insertar
+                //espejo
+                if(raiz2 == null)
+			raiz2 = new Nodo(valorInsertar); //crea nodo raiz
+
+		else
+			raiz2.insertar(valorInsertar); // llama al metodo insertar
+	}
+        public synchronized void insertarNodo2(int valorInsertar2)
+	{
+            System.out.println("Se supone que entra a insertar 2"); 
+            if(raiz2 == null)
+			raiz2 = new Nodo(valorInsertar2); //crea nodo raiz
+
+		else
+			raiz2.insertar2(valorInsertar2); // llama al metodo insertar
+	}
+
+	//--------------- EMPESAR EL RECORRIDO EN PREORDEN-----------------------
+	public synchronized void recorridoPreorden()
+	{
+            System.out.println("Arbol original");
+		ayudantePreorden(raiz);
+                System.out.println("\nArbol espejo ");
+                ayudantePreorden2(raiz2);
+	}
+	//metodo recursivo para recorrido en preorden
+
+	private void ayudantePreorden(Nodo nodo)
+	{
+		if (nodo == null)
+			return;
+
+		System.out.print(nodo.datos + " "); // mostrar datos del nodo
+		ayudantePreorden(nodo.nodoizquierdo); //recorre subarbol izquierdo
+		ayudantePreorden(nodo.nododerecho); //recorre subarbol derecho
+                
+	}
+        private void ayudantePreorden2(Nodo nodo)
+	{
+		if (nodo == null)
+			return;
+
+		System.out.print(nodo.datos2 + " "); // mostrar datos del nodo
+		ayudantePreorden(nodo.nodoizquierdo2); //recorre subarbol izquierdo
+		ayudantePreorden(nodo.nododerecho2); //recorre subarbol derecho
+                
+	}
+   //--------------EMPEZAR RECORRIDO INORDEN-----------------------------------
+	public synchronized void recorridoInorden()
+	{
+                       System.out.println("Arbol original");
+		ayudanteInorden(raiz);
+                 System.out.println("\nArbol espejo");
+                ayudanteInorden2(raiz2);
+	}
+
+	// metodo recursivo para recorrido inorden
+
+	private void ayudanteInorden(Nodo nodo)
+	{
+		if (nodo == null)
+			return;
+
+		ayudanteInorden(nodo.nodoizquierdo);
+		System.out.print(nodo.datos + " ");
+		ayudanteInorden(nodo.nododerecho);
+	}
+        private void ayudanteInorden2(Nodo nodo)
+	{
+		if (nodo == null)
+			return;
+
+		ayudanteInorden(nodo.nodoizquierdo2);
+		System.out.print(nodo.datos2 + " ");
+		ayudanteInorden(nodo.nododerecho2);
+	}
+
+	//-----------------------------EMPEZAR RECORRIDO POSORDEN---------------------------------
+	public synchronized void recorridoPosorden()
+	{
+                       System.out.println("Arbol original");
+		ayudantePosorden(raiz);
+                 System.out.println("\nArbol espejo");
+                ayudantePosorden2(raiz2);
+	}
+
+	//metodo recursivo para recorrido posorden
+
+	private void ayudantePosorden(Nodo nodo)
+	{
+		if (nodo == null)
+			return;
+
+		ayudantePosorden(nodo.nodoizquierdo);
+		ayudantePosorden(nodo.nododerecho);
+		System.out.print(nodo.datos + " ");
+	}
+        private void ayudantePosorden2(Nodo nodo)
+	{
+		if (nodo == null)
+			return;
+
+		ayudantePosorden(nodo.nodoizquierdo2);
+		ayudantePosorden(nodo.nododerecho2);
+		System.out.print(nodo.datos2 + " ");
+	}
+
+}//fin clase arbol
