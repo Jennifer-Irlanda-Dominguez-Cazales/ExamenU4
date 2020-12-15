@@ -1,0 +1,45 @@
+
+package examenu4;
+import java.util.Scanner;
+/**
+ *
+ * @author Dominguez Cazales Jennifer
+ */
+public class ExamenU4 {
+public static void main(String args[]){
+    Scanner leer= new Scanner(System.in);
+		Arbol arbol = new Arbol();
+		int valor;
+                int can;
+               
+
+
+
+		System.out.println( "Dime cuantos valores vas a ingresar: ");
+                can=leer.nextInt();
+                int[ ]   numeros = new  int[1000];
+	
+		for (int i = 1; i<=can ; i++)
+		{
+                    System.out.println("Ingresa el valor N."+i);
+                        valor=leer.nextInt();
+			arbol.insertarNodo(valor);
+                        arbol.insertarNodo2(valor);
+                        numeros[i]=valor;
+		}
+                System.out.println("Los valores insertados son");
+                for (int i = 1; i <=can; i++) {
+                    System.out.print(numeros[i]+"\t");
+                 }
+                
+		System.out.println("\n\nRecorrido preorden");
+		arbol.recorridoPreorden();
+
+		System.out.println("\n\nRecorrido inorden");
+		arbol.recorridoInorden();
+
+		System.out.println("\n\nRecorrido posorden");
+		arbol.recorridoPosorden();
+	}
+    
+}
