@@ -1,0 +1,68 @@
+
+package examenu4;
+public class Nodo {
+
+	//miembros de acceso
+	Nodo nodoizquierdo;
+	int datos;
+	Nodo nododerecho;
+        Nodo nodoizquierdo2;
+	int datos2;
+	Nodo nododerecho2;
+
+	public Nodo(int datosNodo)
+	{
+		datos = datosNodo;
+		nodoizquierdo = nododerecho = null; //
+                
+                datos2 = datosNodo;
+		nodoizquierdo2 = nododerecho2 = null; 
+	}
+
+	
+	public synchronized void insertar(int valorInsertar)
+	{
+		//insertar en subarbol izquierdo
+		if (valorInsertar < datos){
+
+			//inserta nuevo nodoarbol
+			if (nodoizquierdo == null)
+				nodoizquierdo = new Nodo(valorInsertar);
+			else //continua recorriendo subarbol izquierdo
+				nodoizquierdo.insertar(valorInsertar);
+		}
+
+		//insertar nodo derecho
+		else if(valorInsertar > datos){
+
+		//insertar nuevo nodoarbol
+		if (nododerecho == null)
+			nododerecho = new Nodo(valorInsertar);
+		else //continua recorriendo subarbol derecho
+			nododerecho.insertar(valorInsertar);
+		}
+	} 
+        public synchronized void insertar2(int valorInsertar2)
+	{
+
+		if (valorInsertar2 > datos2){
+
+		
+			if (nodoizquierdo2 == null)
+				nodoizquierdo2 = new Nodo(valorInsertar2);
+			else 
+				nodoizquierdo2.insertar(valorInsertar2);
+		}
+
+	
+		else if(valorInsertar2 < datos2){
+
+		
+		if (nododerecho2 == null)
+			nododerecho2 = new Nodo(valorInsertar2);
+		else 
+			nododerecho2.insertar(valorInsertar2);
+		}
+	} 
+
+} //
